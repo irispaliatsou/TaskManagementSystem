@@ -1,0 +1,29 @@
+# Ignore Eclipse project settings
+.classpath
+.project
+.settings/
+
+# Ignore compiled Java files
+bin/
+target/
+*.class
+
+# Ignore IDE-specific files
+*.iml
+.idea/
+*.vscode/
+
+# Ignore logs and temp files
+*.log
+*.tmp
+
+# Ignore dependency files
+*.jar
+*.war
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore JSON save data
+medialab/*.json
