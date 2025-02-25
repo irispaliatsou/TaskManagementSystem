@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.Priority?>
+
+<VBox xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController" spacing="15">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10" />
+    </padding>
+
+    <!-- Top Section: Summary Stats -->
+    <VBox spacing="10">
+        <Label text="Task Summary" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+        <HBox spacing="15">
+            <Label text="Total Tasks: " /><Label fx:id="totalTasksLabel" />
+            <Label text="Completed: " /><Label fx:id="completedTasksLabel" />
+            <Label text="Delayed: " /><Label fx:id="delayedTasksLabel" />
+            <Label text="Due in 7 Days: " /><Label fx:id="dueIn7DaysLabel" />
+        </HBox>
+    </VBox>
+
+    <!-- Task Management -->
+    <VBox spacing="10">
+        <HBox spacing="10">
+            <TextField fx:id="taskNameField" promptText="Task Name" HBox.hgrow="ALWAYS" />
+            <TextArea fx:id="taskDescriptionField" promptText="Task Description" wrapText="true" prefRowCount="2" HBox.hgrow="ALWAYS" />
+        </HBox>
+        <HBox spacing="10">
+            <ComboBox fx:id="categoryComboBox" promptText="Category" />
+            <ComboBox fx:id="priorityComboBox" promptText="Priority" />
+            <DatePicker fx:id="deadlineDatePicker" promptText="Deadline" />
+            <ComboBox fx:id="stateComboBox" promptText="State" />
+            <Button text="Add Task" onAction="#handleAddTask" />
+            <Button text="Delete Task" onAction="#handleDeleteTask" />
+        </HBox>
+        <ListView fx:id="taskListView" VBox.vgrow="ALWAYS" />
+    </VBox>
+
+    <!-- Category Management -->
+    <VBox spacing="15">
+        <Label text="Category Management" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+
+        <VBox spacing="10">
+            <Label text="Categories" style="-fx-font-weight: bold;" />
+            <ListView fx:id="categoryListView" VBox.vgrow="ALWAYS" />
+			<HBox spacing="10">
+            	<TextField fx:id="newCategoryField" promptText="New Category" HBox.hgrow="ALWAYS" />
+            	<Button text="Add Category" onAction="#handleAddCategory" />
+       		</HBox>
+            <HBox spacing="10">
+                <TextField fx:id="categoryNameTextField" promptText="Enter new category name" HBox.hgrow="ALWAYS" />
+                <Button fx:id="editCategoryButton" text="Edit Category" onAction="#handleEditCategory" />
+            </HBox>
+
+            <Button text="Delete Category" onAction="#handleDeleteCategory" />
+        </VBox>
+    </VBox>
+
+    <!-- Priority Management -->
+    <VBox spacing="10">
+        <Label text="Priority Management" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+        <HBox spacing="10">
+            <TextField fx:id="newPriorityField" promptText="New Priority" HBox.hgrow="ALWAYS" />
+            <Button text="Add Priority" onAction="#handleAddPriority" />
+        </HBox>
+        <HBox spacing="10">
+        
+            <TextField fx:id="editPriorityField" promptText="Edit Priority Name" HBox.hgrow="ALWAYS" />
+            <Button fx:id="addPriorityButton" text="Edit Priority" onAction="#handleEditPriority" />
+            
+        </HBox>
+        <Button text="Delete Priority" onAction="#handleDeletePriority" />
+        <ListView fx:id="priorityListView" VBox.vgrow="ALWAYS" />
+    </VBox>
+
+    <!-- Reminder Management -->
+    <VBox spacing="10">
+        <Label text="Reminder Management" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+        <HBox spacing="10">
+            <ComboBox fx:id="reminderComboBox" promptText="Select Task" />
+            <DatePicker fx:id="reminderDatePicker" promptText="Reminder Date" />
+            <Button text="Add Reminder" onAction="#handleAddReminder" />
+        </HBox>
+        <ListView fx:id="reminderListView" VBox.vgrow="ALWAYS" />
+    </VBox>
+
+    <!-- Task Search -->
+    <VBox spacing="10">
+        <Label text="Task Search" style="-fx-font-weight: bold; -fx-font-size: 14px;" />
+        <HBox spacing="10">
+            <TextField fx:id="searchTitleField" promptText="Search Title" HBox.hgrow="ALWAYS" />
+            <ComboBox fx:id="searchCategoryComboBox" promptText="Category" />
+            <ComboBox fx:id="searchPriorityComboBox" promptText="Priority" />
+            <DatePicker fx:id="searchDeadlineDatePicker" promptText="Deadline" />
+            <Button text="Search" onAction="#handleSearchTask" />
+        </HBox>
+        <TableView fx:id="searchResultsTable" VBox.vgrow="ALWAYS">
+            <TableColumn fx:id="searchTitleColumn" text="Title" />
+            <TableColumn fx:id="searchCategoryColumn" text="Category" />
+            <TableColumn fx:id="searchPriorityColumn" text="Priority" />
+            <TableColumn fx:id="searchDeadlineColumn" text="Deadline" />
+        </TableView>
+        <Button text="Reset" onAction="#handleResetSearch" />
+        
+    </VBox>
+</VBox>
